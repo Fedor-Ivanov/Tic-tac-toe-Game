@@ -1,0 +1,290 @@
+// ============================
+// IMPORTS
+// ============================
+
+@import "options"
+@import "default"
+
+// ============================
+// MAIN STYLES
+// ============================
+
+html
+	font-family: "Varela Round"
+	font-size: 1.46vw
+	color: #FFF
+
+body
+	overflow: hidden
+
+.tic-tac-toe
+	width: 15rem
+	height: 15rem
+	display: grid
+	grid-template-rows: repeat(3, 1fr)
+	grid-gap: .5rem
+	position: relative
+	&-background
+		display: grid
+		grid-template-columns: 8fr 2fr
+		grid-template-rows: auto 1fr
+		justify-items: center
+		align-items: center
+		width: 100vw
+		height: 100vh
+		background-image: linear-gradient(to right, $mainC1, $mainC2)
+		> *
+			opacity: 0 
+		&_active > *
+			opacity: 1
+	&__title
+		padding: 2rem 0
+		font-size: 2rem
+		text-align: center
+	&-top
+		width: 100%
+		grid-area: 1 / -2 /  -1 / -1
+		text-align: center
+		// grid-row-start: 1
+		// grid-column-start: -2
+		// grid-row-end: -1
+		// grid-column-end: -1
+		padding: 1rem
+		&__title
+			margin-bottom: .5rem
+			&-sub
+				@include flex($jc: space-between)
+				margin-bottom: 0.5rem
+				border-bottom: .05rem solid  
+		li
+			@include flex($jc: space-between)
+			position: relative
+		&-list
+			font-size: 1rem
+			li
+				&:nth-child(1)
+					&:after
+						content: "1" 
+				&:nth-child(2)
+					&:after
+						content: "2" 
+				&:nth-child(3)
+					&:after
+						content: "3" 
+				&:nth-child(-n + 3)
+					font-size: 1.3em
+					font-weight: bold 
+					line-height: 1.4
+					padding-left: 1.5em   
+					&:before
+						content: '\f091'
+						font-family: "Font Awesome 5 Free" 
+						font-weight: 800
+						position: absolute
+						left: 0
+						top: 50%
+						transform: translate(0, -50%)
+					&:after
+						position: absolute
+						line-height: 1
+						font-size: 0.6em  
+						color: $mainC2
+						top: 50%
+						left: 0.95em 
+						transform: translate(-50%, -73%)
+			span:first-child
+				max-width: 11rem
+				overflow: hidden
+				text-overflow: ellipsis
+				white-space: nowrap   			
+			.no-results
+				justify-content: center
+				&:nth-child(n)
+					font-weight: normal 
+					padding-left: 0 
+					&:before, &:after
+						content: none
+				 			
+	&__row
+		display: grid
+		grid-template-columns: repeat(3, 1fr)
+		grid-gap: .5rem
+		& + &
+			&:before, &:after
+				content: ""
+				position: absolute
+				background-color: #FFF
+				border-radius: 1rem
+			&:before
+				width: 0.5rem
+				height: 100%
+				top: 0
+			&:after
+				width: 100%
+				height: 0.5rem
+				left: 0
+		&:nth-child(2):before
+			left: 4.66rem
+		&:nth-child(3):before
+			left: 9.85rem
+		&:nth-child(2):after
+			top: 4.66rem
+		&:nth-child(3):after
+			top: 9.85rem
+	&__col
+		@include flex($jc: center, $ai: center)
+	&__tic, &__tac
+		width: 3rem
+		height: 3rem
+	&__tic
+		border: .25rem solid #fff
+			radius: 50%
+	&__tac
+		position: relative
+		transform: rotate(45deg)
+		&:before, &:after
+			content: ""
+			position: absolute
+			border-radius: 1rem
+			background-color: #FFF
+		&:before
+			width: 100%
+			height: 0.25rem
+			left: 0
+			top: calc(50% - .25rem / 2)
+		&:after
+			width: 0.25rem
+			height: 100%
+			top: 0
+			left: calc(50% - .25rem / 2)
+
+.modal
+	&-overlay
+		@include flex($jc: center, $ai: center)
+		position: fixed
+		left: 0
+		right: 0
+		top: 0
+		bottom: 0
+		background-color: rgba(#000, .0)
+		visibility: hidden
+		transition: .5s
+		&_show
+			visibility: visible
+			background-color: rgba(#000, .8)
+	&-window
+		@include flex($fd: column, $ai: center)
+		padding: 1.5rem
+		border-radius: .5rem
+		background-color: #FFF
+		transition: .5s
+		opacity: 0
+		position: absolute
+		visibility: hidden
+		transform: translate(0, 2rem)
+		&_show
+			position: static
+			visibility: visible
+			opacity: 1
+			transform: translate(0, 0)
+		&_type
+			&_start-game
+				width: 30rem
+			&_end-game
+				width: 33rem 	
+		color: $mainC2
+		&__title
+			text-align: center
+			margin-bottom: .3em
+		&__btn
+			background-color: $mainC1
+			color: #FFF
+			font-size: 1.5rem
+			padding: .25rem 2rem
+			border: none
+				radius: .25rem
+			transition: .2s
+			&:hover
+				background-color: $mainC2
+			&-wrap
+				@include flex($jc: space-evenly)
+				margin-top: 1rem
+				width: 100% 
+		&__text
+			text-align: center
+			color: $mainC1		 	
+		&__input
+			font-family: inherit
+			font-size: 1rem
+			text-align: center
+			border: none
+				bottom: .1rem solid $mainC2
+			padding-bottom: 0.3rem
+			margin-bottom: 1rem
+			color: $mainC2
+			&::placeholder
+				color: rgba($mainC2, .7)
+			&_error
+				border-bottom-color: red
+		&-side
+			@include flex
+			&-item
+				&:first-child &__label
+					border-radius: .25rem 0 0 .25rem
+				&:last-child &__label
+					border-radius: 0 .25rem .25rem 0
+				&__input
+					display: none
+				&__label
+					@include flex($jc: center, $ai: center)
+					width: 4rem
+					height: 2.2rem
+					border: .1rem solid $mainC2
+					cursor: pointer
+					font-size: 1.3rem
+					line-height: 1
+				&__input:checked + &__label
+					background-color: $mainC2
+					color: #FFF
+		&-multiplayer
+			&-grid
+				display: grid
+				grid-template-columns: 1fr 1fr
+				grid-gap: 1rem
+			&-item
+				@include flex($fd: column, $ai: center)
+				&__label
+					@include flex ($jc: center, $ai: center)
+					width: 2rem
+					height: 2rem
+					background-color: $mainC2
+					color: #FFF
+					border-radius: .25rem
+					font-size: 1.5rem
+					margin-bottom: 0.8rem
+
+
+.tabs
+	&-toggle
+		@include flex($jc: center)
+		margin-bottom: .5rem
+		&__btn
+			font-size: 1rem
+			padding: .25rem .75rem
+			border: .1rem solid $mainC1
+				radius: .25rem
+			color: $mainC1
+			background-color: transparent
+			transition: .2s
+			& + &
+				margin-left: 0.75rem
+			&_active, &:hover
+				color: #FFF
+				background-color: $mainC1
+	&-item
+		display: none
+		flex-direction: column
+		align-items: center
+		padding: 1rem 0
+		&_active
+			display: flex

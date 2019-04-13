@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tic-tac-toe</title>
+	<link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+	<div class="tic-tac-toe-background">
+		<h2 class="tic-tac-toe__title">Lorem impus dolor</h2>
+
+		<div class="tic-tac-toe">
+			<div class="tic-tac-toe__row">
+				<div class="tic-tac-toe__col"></div>
+				<div class="tic-tac-toe__col"></div>
+				<div class="tic-tac-toe__col"></div>
+			</div>
+			<div class="tic-tac-toe__row">
+				<div class="tic-tac-toe__col"></div>
+				<div class="tic-tac-toe__col"></div>
+				<div class="tic-tac-toe__col"></div>
+			</div>
+			<div class="tic-tac-toe__row">
+				<div class="tic-tac-toe__col"></div>
+				<div class="tic-tac-toe__col"></div>
+				<div class="tic-tac-toe__col"></div>
+			</div>
+		</div>
+
+		<div class="tic-tac-toe-top">
+			<h3 class="tic-tac-toe-top__title">Top list</h3>
+			<h4 class="tic-tac-toe-top__title-sub">
+				<span>Nickname</span>
+				<span>Wins</span>
+			</h4>
+			<ul class="tic-tac-toe-top-list">
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="modal-overlay modal-overlay_show">
+		<div id="startGame" class="modal-window modal-window_show modal-window_type_start-game">
+			<h2 class="modal-window__title">Start Your Game</h2>
+
+			<div class="tabs">
+				<div class="tabs-toggle">
+					<button id="singleMode" class="tabs-toggle__btn tabs-toggle__btn_active">One player</button>
+					<button id="multiplayerMode" class="tabs-toggle__btn">Two players</button>
+				</div>
+				<div class="tabs-wrap">
+					<div class="tabs-item tabs-item_active">
+						<input maxlength="16" type="text" id="singleName" class="modal-window__input" placeholder="Type Your name">
+
+						<div class="modal-window-side">
+							<div class="modal-window-side-item">
+								<input type="radio" name="side" class="modal-window-side-item__input" id="side1" checked>
+								<label for="side1" class="modal-window-side-item__label">X</label>
+							</div>
+							<div class="modal-window-side-item">
+								<input type="radio" name="side" class="modal-window-side-item__input" id="side2">
+								<label for="side2" class="modal-window-side-item__label">O</label>
+							</div>
+						</div>
+					</div>
+					<div class="tabs-item">
+						<div class="modal-window-multiplayer-grid">
+							<div class="modal-window-multiplayer-grid__col">
+								<div class="modal-window-multiplayer-item">
+									<label for="mult1" class="modal-window-multiplayer-item__label">X</label>
+									<input maxlength="16" type="text" id="mults1" class="modal-window__input modal-window-multiplayer-item__input" placeholder="Player 1 name"></div>
+							</div>
+							<div class="modal-window-multiplayer-grid__col">
+								<div class="modal-window-multiplayer-item">
+									<label for="mult2" class="modal-window-multiplayer-item__label">O</label>
+									<input maxlength="16" type="text" id="mults2" class="modal-window__input modal-window-multiplayer-item__input" placeholder="Player 2 name"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<button class="modal-window__btn modal-window__play">PLAY</button>
+
+		</div>
+
+			<div id="endGame" class="modal-window modal-window_type_end-game">
+				<h2 class="modal-window__title">Thats all</h2>
+
+				<div class="modal-window__text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi aperiam vero aliquid eligendi iure harum eius molestiae voluptatem temporibus quidem laudantium asperiores, reiciendis, consequuntur excepturi iusto labore autem ut atque!</div>
+
+				<div class="modal-window__btn-wrap">
+					<button class="modal-window__btn modal-window__again">Play again</button>
+					<button class="modal-window__btn modal-window__new">NEW GAME</button>
+				</div>	
+			</div>
+	</div>
+
+
+	<script src="js/main.js"></script>
+</body>
+</html>
